@@ -62,7 +62,11 @@ const kdData=[
   {name:"α=1.0",desc:"Distilled",auroc:0.691,bal:0.613},
 ];
 const groupImp=[{name:"Embedding (E)",val:0.01,color:C.purple},{name:"Linguistic (L)",val:0.02,color:C.amber},{name:"Frequency (F)",val:0.53,color:C.coral}];
-const YC={2018:120,2019:95,2020:88,2021:110,2022:130,2023:105,2024:140,2025:96,2026:81};
+const YC={2018:4,2019:3,2020:107,2021:116,2022:104,2023:147,2024:190,2025:97,2026:51};
+
+/* ═══ REAL MODEL PREDICTIONS (151 words, text-only MLP model) ═══ */
+/* Format: [word, year, actual_label, pred_prob, [[shap_feat, shap_val],...]] */
+const WD=[["쉬었음 청년",2026,1,0.755],["쌰갈",2026,1,0.754],["영크크",2026,1,0.751],["앙",2026,1,0.75],["언발란스",2026,1,0.743],["늙크크",2026,1,0.714],["할렐야루",2026,0,0.678],["간바레",2026,0,0.637],["Chill guy",2025,1,0.923,[[" h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",-0.0]]],["섹시푸드",2025,1,0.848,[["h12_freq_late_mean",15.3],["h12_freq_last",2.5],["h12_freq_min",1.5],["emb_175",0.1]]],["크보",2025,1,0.838,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",0.1]]],["도파민",2025,1,0.779,[["h12_freq_late_mean",15.2],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["저속노화",2025,1,0.765,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",0.1]]],["미라클 모닝",2025,1,0.758,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.5],["emb_175",0.1]]],["익속",2025,0,0.74,[["h12_freq_late_mean",-5.3],["h12_freq_min",-1.8],["h12_freq_last",-0.7],["h12_freq_sum",-0.1]]],["트랄랄레로 트랄랄라",2025,0,0.219,[["h12_freq_late_mean",-5.2],["h12_freq_min",-1.8],["h12_freq_last",-0.7],["hangul_ratio",-0.0]]],["햄부기햄북 햄북스딱스",2025,0,0.075,[["h12_freq_late_mean",-5.2],["h12_freq_min",-1.8],["h12_freq_last",-0.7],["hangul_ratio",-0.0]]],["티라미수 케익",2024,1,0.811,[["h12_freq_late_mean",14.9],["h12_freq_last",2.4],["h12_freq_min",1.4],["emb_129",0.2]]],["억까",2024,1,0.799,[["h12_freq_late_mean",15.3],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["밤양갱",2024,1,0.796,[["h12_freq_late_mean",15.2],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["럭키비키",2024,1,0.775,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",0.1]]],["뉴진스럽다",2024,0,0.476,[["h12_freq_late_mean",-5.2],["h12_freq_min",-1.8],["h12_freq_last",-0.7],["emb_129",0.5]]],["꽁꽁 얼어붙은 한강 위로 고양이가 걸어다닙니다",2024,0,0.095,[["h12_freq_late_mean",-6.7],["h12_freq_min",-0.6],["h12_freq_last",0.4],["h12_freq_sum",-0.1]]],["00햄",2023,1,0.825,[["h12_freq_late_mean",15.8],["h12_freq_min",1.6],["h12_freq_last",1.2],["h12_peak_sharpness",-0.1]]],["촌캉스",2023,1,0.812,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",0.1]]],["전업자녀",2023,1,0.463,[["h12_freq_late_mean",15.7],["h12_freq_min",1.6],["h12_freq_last",0.9],["emb_129",0.2]]],["멋지다, 연진아!",2023,0,0.073,[["h12_freq_late_mean",-5.2],["h12_freq_min",-1.8],["h12_freq_last",-0.7],["emb_129",0.5]]],["하남자",2022,1,0.873,[["h12_freq_late_mean",15.2],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["알빠노",2022,1,0.796,[["h12_freq_late_mean",15.3],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["중꺾마",2022,1,0.507,[["h12_freq_late_mean",15.3],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["어쩔티비",2021,1,0.701,[["h12_freq_late_mean",15.2],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["킹받는다",2021,1,0.81,[["h12_freq_late_mean",15.3],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["깐부",2021,1,0.804,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["h12_peak_sharpness",-0.1]]],["무야호",2021,1,0.775,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",0.1]]],["갓생",2021,1,0.771,[["h12_freq_late_mean",15.2],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["오또케",2020,1,0.839,[["h12_freq_late_mean",15.2],["h12_freq_last",2.5],["h12_freq_min",1.6],["h12_freq_first",-0.1]]],["깡",2020,1,0.827,[["h12_freq_late_mean",15.2],["h12_freq_last",2.4],["h12_freq_min",1.6],["hangul_ratio",0.1]]],["내돈내산",2020,1,0.804,[["h12_freq_late_mean",15.1],["h12_freq_last",2.4],["h12_freq_min",1.6],["emb_253",-0.1]]]];
 
 /* ═══ UI ═══ */
 function Card({children,style}){return<div style={{background:C.card,border:`1px solid ${C.border}`,borderRadius:14,padding:"22px 20px",boxShadow:shadow,...style}}>{children}</div>;}
@@ -165,21 +169,23 @@ function Predict(){
     if(!word.trim()) return;
     setLoading(true);
     setTimeout(()=>{
-      // Mock prediction — will be replaced with actual model
       const w=word.trim();
-      const h=[...w].reduce((a,c)=>a+c.charCodeAt(0),0);
-      const r=((h*16807)%2147483647)/2147483647;
-      const prob=Math.round((0.15+r*0.7)*100)/100;
-      const label=prob>=0.5?1:0;
-      setResult({label,prob,
-        features:{
-          "h12_freq_late_mean":label?"+3.8":"-2.1",
-          "hangul_ratio":wa.hangulRatio>80?"+0.3":"-0.1",
-          "syllable_count":wa.syllables<=4?"+0.2":"-0.3",
-          "is_word_like":wa.isWord?"+0.15":"-0.1",
-          "rhythm_score":"+0.08"
-        }
-      });
+      // Check if word exists in real dataset
+      const match=WD.find(d=>d[0]===w||d[0].includes(w)||w.includes(d[0]));
+      let label,prob,features;
+      if(match){
+        prob=match[3];
+        label=prob>=0.5?1:0;
+        features=match[4]?Object.fromEntries(match[4].map(([f,v])=>[f,(v>0?"+":"")+v.toFixed(1)])):{"(빈도 데이터 없음)":"—"};
+      } else {
+        // Mock for unknown words
+        const h=[...w].reduce((a,c)=>a+c.charCodeAt(0),0);
+        const r=((h*16807)%2147483647)/2147483647;
+        prob=Math.round((0.15+r*0.7)*100)/100;
+        label=prob>=0.5?1:0;
+        features={"hangul_ratio":wa.hangulRatio>80?"+0.3":"-0.1","syllable_count":wa.syllables<=4?"+0.2":"-0.3","is_word_like":wa.isWord?"+0.15":"-0.1","(데모 모드)":"—"};
+      }
+      setResult({label,prob,features,isReal:!!match});
       setLoading(false);
     },800);
   };
@@ -266,7 +272,7 @@ function Predict(){
       </div>
 
       <Insight color={result.label===1?C.green:C.red}>
-        <b style={{color:result.label===1?C.green:C.red}}>참고:</b> 현재는 데모 모드입니다. 실제 서비스에서는 학습된 모델 가중치(pt/pkl)가 로드되어 E(임베딩)+L(언어학적 피처)를 기반으로 예측합니다. 빈도 데이터(F)가 추가되면 예측 정확도가 크게 향상됩니다.
+        <b style={{color:result.label===1?C.green:C.red}}>{result.isReal?"실제 모델 결과":"데모 모드"}:</b> {result.isReal?`이 유행어는 학습 데이터셋(819개)에 포함된 단어입니다. 표시된 확률은 텍스트 전용(E+L) MLP 모델의 실제 예측값이며, SHAP 값은 E+L+F(h12) LightGBM 모델 기준입니다.`:`이 유행어는 학습 데이터셋에 없어 데모 예측을 보여줍니다. 실제 서비스에서는 모델 가중치(pt/pkl)가 로드되어 정확한 예측을 제공합니다.`}
       </Insight>
     </Card>}
   </div>;
@@ -276,15 +282,16 @@ function Predict(){
 function Analysis(){
   const [exp,setExp]=useState("horizon");
   const [shapWord,setShapWord]=useState("럭키비키");
-  const SHAP_WORDS={
-    "럭키비키":[{f:"h12_freq_late_mean",v:-3.2},{f:"h12_freq_min",v:-2.1},{f:"hangul_ratio",v:0.3},{f:"syllable_count",v:0.2},{f:"h12_freq_last",v:-1.0},{f:"rhythm_score",v:0.15}],
-    "먹방":[{f:"h12_freq_late_mean",v:4.5},{f:"h12_freq_min",v:2.8},{f:"h12_freq_last",v:2.0},{f:"hangul_ratio",v:0.3},{f:"is_word_like",v:0.4},{f:"syllable_count",v:0.2}],
-    "갓생":[{f:"h12_freq_late_mean",v:3.2},{f:"h12_freq_min",v:1.5},{f:"hangul_ratio",v:0.3},{f:"h12_freq_last",v:1.0},{f:"morph_count",v:-0.1},{f:"rhythm_score",v:0.2}],
-    "어쩔티비":[{f:"h12_freq_late_mean",v:-4.5},{f:"h12_freq_min",v:-3.0},{f:"h12_freq_last",v:-2.5},{f:"is_sentence_like",v:-0.3},{f:"hangul_ratio",v:0.2},{f:"char_len",v:-0.2}],
-    "TMI":[{f:"h12_freq_late_mean",v:3.8},{f:"h12_freq_min",v:2.2},{f:"h12_freq_last",v:1.8},{f:"english_ratio",v:-0.2},{f:"char_len",v:0.3},{f:"hangul_ratio",v:-0.5}],
-  };
-  const shapD=SHAP_WORDS[shapWord]||[];
-  const maxS=Math.max(...shapD.map(d=>Math.abs(d.v)),1);
+  const [shapSearch,setShapSearch]=useState("");
+  // Build SHAP from real WD data
+  const shapResults=useMemo(()=>{
+    const q=shapSearch.trim().toLowerCase();
+    if(!q) return WD.filter(d=>d[4]).slice(0,8);
+    return WD.filter(d=>d[0].toLowerCase().includes(q)&&d[4]);
+  },[shapSearch]);
+  const selectedShap=WD.find(d=>d[0]===shapWord);
+  const shapD=selectedShap&&selectedShap[4]?selectedShap[4]:[];
+  const maxS=Math.max(...shapD.map(d=>Math.abs(d[1])),1);
 
   const TABS=[{id:"horizon",l:"🕐 Horizon 실험"},{id:"model",l:"🏆 모델 비교"},{id:"ablation",l:"🧪 Ablation"},{id:"importance",l:"📊 Feature 중요도"},{id:"kd",l:"🎓 지식 증류"}];
 
@@ -401,29 +408,39 @@ function Analysis(){
       </div>
 
       {/* Interactive SHAP per word */}
-      <ChartCard title="개별 유행어 SHAP 분석" sub="유행어를 선택하면 해당 예측의 피처별 기여도를 보여줍니다">
+      <ChartCard title="개별 유행어 SHAP 분석" sub="유행어를 검색하면 해당 예측의 피처별 기여도를 보여줍니다 (실제 LightGBM SHAP 값)">
+        <div style={{display:"flex",gap:10,marginBottom:12,flexWrap:"wrap",alignItems:"center"}}>
+          <input value={shapSearch} onChange={e=>setShapSearch(e.target.value)} placeholder="유행어 검색 (예: 갓생, 킹받, 럭키...)" style={{padding:"8px 14px",borderRadius:8,border:`1px solid ${C.border}`,background:C.bg,color:C.text,fontSize:13,fontFamily:font,outline:"none",width:240}} onFocus={e=>e.target.style.borderColor=C.amber} onBlur={e=>e.target.style.borderColor=C.border}/>
+          <span style={{fontSize:11,color:C.textMuted}}>{shapResults.length}개 결과</span>
+        </div>
         <div style={{display:"flex",gap:5,marginBottom:16,flexWrap:"wrap"}}>
-          {Object.keys(SHAP_WORDS).map(w=><Pill key={w} active={shapWord===w} color={C.purple} onClick={()=>setShapWord(w)}>{w}</Pill>)}
+          {shapResults.slice(0,12).map(d=><Pill key={d[0]} active={shapWord===d[0]} color={d[2]===1?C.green:C.coral} onClick={()=>setShapWord(d[0])}>{d[0].slice(0,12)}</Pill>)}
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:16}}>
           <div style={{background:C.bg,borderRadius:10,padding:16}}>
-            <div style={{fontSize:13,fontWeight:600,color:C.text,marginBottom:12}}>"{shapWord}" 피처별 SHAP</div>
-            {shapD.map((f,i)=>{const pct=Math.abs(f.v)/maxS*100;const isPos=f.v>0;return<div key={i} style={{display:"flex",alignItems:"center",gap:8,marginBottom:9}}>
-              <span style={{color:C.textDim,fontSize:11,width:130,textAlign:"right",flexShrink:0}}>{f.f}</span>
+            <div style={{fontSize:13,fontWeight:600,color:C.text,marginBottom:4}}>"{shapWord}"</div>
+            <div style={{fontSize:11,color:C.textMuted,marginBottom:12}}>
+              {selectedShap?`${selectedShap[1]}년 · 실제 label=${selectedShap[2]} · 예측 확률=${(selectedShap[3]*100).toFixed(1)}%`:"데이터 없음"}
+            </div>
+            {shapD.length>0?shapD.map((f,i)=>{const pct=Math.abs(f[1])/maxS*100;const isPos=f[1]>0;return<div key={i} style={{display:"flex",alignItems:"center",gap:8,marginBottom:9}}>
+              <span style={{color:C.textDim,fontSize:11,width:130,textAlign:"right",flexShrink:0}}>{f[0]}</span>
               <div style={{flex:1,height:18,position:"relative"}}><div style={{position:"absolute",left:"50%",top:0,bottom:0,width:1,background:C.border}}/>
                 {isPos?<div style={{position:"absolute",left:"50%",width:`${pct/2.2}%`,height:14,top:2,borderRadius:"0 4px 4px 0",background:`${C.green}aa`,marginLeft:2}}/>
                 :<div style={{position:"absolute",right:"50%",width:`${pct/2.2}%`,height:14,top:2,borderRadius:"4px 0 0 4px",background:`${C.red}aa`,marginRight:2}}/>}
               </div>
-              <span style={{color:isPos?C.green:C.red,fontSize:12,fontFamily:mono,fontWeight:600,width:36,textAlign:"right"}}>{f.v>0?"+":""}{f.v}</span>
-            </div>;})}
-            <div style={{display:"flex",justifyContent:"center",gap:16,marginTop:6,fontSize:10,color:C.textMuted}}><span>← label=0 방향</span><span>label=1 방향 →</span></div>
+              <span style={{color:isPos?C.green:C.red,fontSize:12,fontFamily:mono,fontWeight:600,width:40,textAlign:"right"}}>{f[1]>0?"+":""}{f[1]}</span>
+            </div>;}):<div style={{color:C.textMuted,fontSize:12,padding:20,textAlign:"center"}}>이 단어는 SHAP 데이터가 없습니다 (빈도 데이터 미보유)</div>}
+            {shapD.length>0&&<div style={{display:"flex",justifyContent:"center",gap:16,marginTop:6,fontSize:10,color:C.textMuted}}><span>← label=0 방향</span><span>label=1 방향 →</span></div>}
           </div>
           <div style={{fontSize:12,color:C.textDim,lineHeight:1.8}}>
-            {shapWord==="럭키비키"&&<>후반부 평균 빈도(h12_freq_late_mean)가 -3.2로 강하게 label=0 방향. 초기에 폭발적이었으나 후반 급감하여 단기유행 패턴. 한글 비율(+0.3)은 소폭 긍정적이나 빈도 감소를 극복하지 못함.</>}
-            {shapWord==="먹방"&&<>후반부 평균 빈도(+4.5), 최소 빈도(+2.8), 마지막 달 빈도(+2.0) 모두 강하게 label=1 방향. 12개월 내내 높은 빈도를 유지하는 전형적 정착 단어 패턴.</>}
-            {shapWord==="갓생"&&<>후반부 빈도(+3.2)가 장기생존을 지지. 먹방보다는 약하지만 여전히 안정적 사용 패턴을 보임.</>}
-            {shapWord==="어쩔티비"&&<>모든 빈도 피처가 강하게 음수. 후반부 거의 사라진 전형적 단기유행. 문장형 표현(-0.3)도 부정적 요인.</>}
-            {shapWord==="TMI"&&<>빈도 피처 모두 강하게 양수. 영어 단어임에도 한국어 환경에서 장기 정착. 다만 hangul_ratio(-0.5)가 유일한 부정 요인.</>}
+            <div style={{fontSize:13,fontWeight:600,color:C.text,marginBottom:8}}>SHAP 해석 가이드</div>
+            <p style={{margin:"0 0 8px"}}>각 막대는 해당 피처가 이 단어의 예측에 기여한 방향과 크기를 나타냅니다.</p>
+            <p style={{margin:"0 0 8px"}}><span style={{color:C.green}}>▶ 오른쪽(+)</span>: label=1(장기생존) 방향으로 기여</p>
+            <p style={{margin:"0 0 8px"}}><span style={{color:C.red}}>◀ 왼쪽(-)</span>: label=0(단기유행) 방향으로 기여</p>
+            <p style={{margin:"0 0 8px"}}><b>h12_freq_late_mean</b>이 거의 모든 단어에서 압도적으로 큰 값을 가집니다. 이는 12개월 후반부 평균 빈도가 생존 여부를 거의 결정한다는 뜻입니다.</p>
+            <div style={{padding:10,borderRadius:6,background:C.purpleBg,marginTop:8,fontSize:11}}>
+              <b style={{color:C.purple}}>참고:</b> 이 SHAP 값은 E+L+F(h12) 전체 피처를 사용하는 LightGBM 모델의 것입니다. 텍스트 전용(E+L) 모델에서는 SHAP 분포가 다릅니다.
+            </div>
           </div>
         </div>
       </ChartCard>
